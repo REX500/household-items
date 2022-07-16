@@ -7,11 +7,13 @@ import { householdItemState } from '../../store/items';
 // components
 import { TextField, Button, Box, Autocomplete } from '@mui/material';
 
-type ownerTypes = 'Filip' | 'Eva' | 'Martine' | 'Filip and Eva';
+type ownerTypes = 'Filip' | 'Eva' | 'Martine' | 'Filip and Eva' | 'Unknown';
 
+// utility for creating unique Id
+let id = 0;
 const CreateHouseholdItem = (): JSX.Element => {
 	const [name, setName] = useState('');
-	const [price, setPrice] = useState(0);
+	const [price, setPrice] = useState<number | undefined>(undefined);
 	const [owner, setOwner] = useState<ownerTypes | null>(null);
 	const setHouseHoldItem = useSetRecoilState(householdItemState);
 
@@ -21,9 +23,10 @@ const CreateHouseholdItem = (): JSX.Element => {
 		setHouseHoldItem((oldItemList) => [
 			...oldItemList,
 			{
+				id: getId(),
 				name,
-				price,
-				owner,
+				price: price ?? null,
+				owner: owner ?? null,
 			},
 		]);
 		setName('');
@@ -31,7 +34,11 @@ const CreateHouseholdItem = (): JSX.Element => {
 		setOwner(null);
 	};
 
-	const addButtonDisabled = name === '' || price === 0 || owner === null;
+	const getId = () => {
+		return id++;
+	};
+
+	const addButtonDisabled = name === '';
 
 	return (
 		<Box
