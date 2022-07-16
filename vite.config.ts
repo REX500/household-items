@@ -5,10 +5,15 @@ const path = require('path');
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	esbuild: {
+		logOverride: { 'this-is-undefined-in-esm': 'silent' },
+	},
 	plugins: [react()],
+	server: {
+		port: 3000,
+	},
 	resolve: {
 		alias: {
-			dumb: path.resolve(__dirname, './src/dumb'),
 			features: path.resolve(__dirname, './src/features'),
 			pages: path.resolve(__dirname, './src/pages'),
 			types: path.resolve(__dirname, './src/types'),

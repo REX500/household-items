@@ -6,9 +6,9 @@ interface Item {
 	owner: 'Filip' | 'Eva' | 'Martine' | 'Filip and Eva';
 }
 
-const todoListState = atom({
+const householdItemState = atom({
 	key: 'TodoList',
 	default: [] as Item[],
 });
 
-export { todoListState };
+export { householdItemState };
