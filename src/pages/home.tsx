@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import CreateHouseholdItem from '../features/createHouseholdItem/createHouseholdItem';
 import HouseholdItemList from '../features/householdItemList/householdItemList';
+import HouseholdItemHoverList from '../features/householdItemHoverList/householdItemHoverList';
 
 // icons
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -57,8 +58,18 @@ export default function Home(): JSX.Element {
 				</Button>
 			</Box>
 
-			<Box mt={8}>
-				{page === 'add items' && <CreateHouseholdItem />}
+			<Box
+				mt={8}
+				sx={{
+					position: 'relative',
+				}}
+			>
+				{page === 'add items' && (
+					<>
+						<CreateHouseholdItem />
+						<HouseholdItemHoverList />
+					</>
+				)}
 				{page === 'add price to items' && <HouseholdItemList />}
 
 				{/* <Box mt={2}>
