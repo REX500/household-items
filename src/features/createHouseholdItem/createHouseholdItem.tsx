@@ -44,19 +44,26 @@ const CreateHouseholdItem = (): JSX.Element => {
 		<Box
 			sx={{
 				display: 'flex',
+				flexDirection: 'column',
 				alignItems: 'center',
 				justifyContent: 'center',
 			}}
 		>
 			<TextField
+				sx={{
+					width: '280px',
+				}}
 				label="Item"
 				placeholder="Enter item..."
 				value={name}
 				size="small"
 				onChange={(e) => setName(e.target.value)}
 			/>
-			<Box ml={1}>
+			<Box mt={1}>
 				<TextField
+					sx={{
+						width: '280px',
+					}}
 					label="Price"
 					placeholder="Enter price..."
 					type="number"
@@ -65,7 +72,7 @@ const CreateHouseholdItem = (): JSX.Element => {
 					onChange={(e) => setPrice(Number(e.target.value))}
 				/>
 			</Box>
-			<Box ml={1}>
+			<Box mt={1}>
 				<Autocomplete
 					options={['Filip', 'Eva', 'Martine', 'Filip and Eva'] as ownerTypes[]}
 					value={owner}
@@ -76,7 +83,7 @@ const CreateHouseholdItem = (): JSX.Element => {
 						<TextField
 							{...params}
 							sx={{
-								width: '180px',
+								width: '280px',
 							}}
 							label="Owner"
 							placeholder="Enter owner..."
@@ -86,7 +93,7 @@ const CreateHouseholdItem = (): JSX.Element => {
 				/>
 			</Box>
 
-			<Box ml={1}>
+			<Box mt={1}>
 				<Button
 					variant="contained"
 					color="primary"
