@@ -16,3 +16,10 @@ type Pages =
 	| 'add price to items'
 	| 'assign items to person'
 	| 'view items';
+
+interface Item {
+	id: number;
+	name: string;
+	price: number | null;
+	owner: 'Filip' | 'Eva' | 'Martine' | 'Filip and Eva' | 'Unknown' | null;
+}

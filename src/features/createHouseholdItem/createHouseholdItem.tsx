@@ -5,7 +5,13 @@ import { useSetRecoilState } from 'recoil';
 import { householdItemState } from '../../store/items';
 
 // components
-import { TextField, Button, Box, Autocomplete } from '@mui/material';
+import {
+	TextField,
+	Button,
+	Box,
+	Autocomplete,
+	Typography,
+} from '@mui/material';
 
 type ownerTypes = 'Filip' | 'Eva' | 'Martine' | 'Filip and Eva' | 'Unknown';
 
@@ -49,16 +55,20 @@ const CreateHouseholdItem = (): JSX.Element => {
 				justifyContent: 'center',
 			}}
 		>
-			<TextField
-				sx={{
-					width: '280px',
-				}}
-				label="Item"
-				placeholder="Enter item..."
-				value={name}
-				size="small"
-				onChange={(e) => setName(e.target.value)}
-			/>
+			<Typography variant="h5" textAlign="center">Create new household item</Typography>
+
+			<Box mt={2}>
+				<TextField
+					sx={{
+						width: '280px',
+					}}
+					label="Item"
+					placeholder="Enter item..."
+					value={name}
+					size="small"
+					onChange={(e) => setName(e.target.value)}
+				/>
+			</Box>
 			<Box mt={1}>
 				<TextField
 					sx={{

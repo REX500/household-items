@@ -12,14 +12,13 @@ import {
 	ListItemText,
 	Typography,
 	Divider,
-	IconButton,
 	Paper,
 } from '@mui/material';
 
-const HouseholdItemHoverList = (): JSX.Element => {
+const HouseholdItemHoverList = (): JSX.Element | null => {
 	const todoList = useRecoilValue(householdItemState);
 
-	return (
+	return todoList.length > 0 ? (
 		<Paper
 			sx={{
 				position: 'absolute',
@@ -27,23 +26,33 @@ const HouseholdItemHoverList = (): JSX.Element => {
 				right: 0,
 				padding: 2,
 			}}
+			elevation={2}
 		>
-			<List
-				sx={{
-					minWidth: '200px',
-				}}
-			>
-				{todoList.map((item) => (
-					<Fragment key={item.id}>
-						<ListItem>
-							<ListItemText primary={item.name} secondary={item.owner} />
-						</ListItem>
-						<Divider component="li" />
-					</Fragment>
-				))}
-			</List>
+			<Typography variant="h6">Added household items</Typography>
+
+			<Box mt={2}>
+				<List
+					sx={{
+						minWidth: '200px',
+						maxHeight: 300,
+						overflowY: 'auto',
+					}}
+				>
+					{todoList.map((item, index) => (
+						<Fragment key={item.id}>
+							<ListItem>
+								<ListItemText
+									primary={`${index + 1}. ${item.name}`}
+									secondary={item.owner}
+								/>
+							</ListItem>
+							<Divider component="li" />
+						</Fragment>
+					))}
+				</List>
+			</Box>
 		</Paper>
-	);
+	) : null;
 };
 
 export default HouseholdItemHoverList;
